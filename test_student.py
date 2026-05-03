@@ -19,9 +19,23 @@ class TestParseRow(unittest.TestCase):
                         )
     
         self.assertEqual(parse_row(fake_csv_line), expected_row)
+
+class TestLinkedListFunctions(unittest.TestCase):
+
+    def test_listlen(self):
+        # 1. Load the fake data from your tiny CSV
+        my_list = read_csv_lines("sample.csv")
+        
+        self.assertEqual(listlen(my_list), 4)
+
+    def test_filter_rows(self):
+        # 1. Load the data
+        my_list = read_csv_lines("sample.csv")
+        
+        filtered_list = filter_rows(my_list, "year", "equal", 2007)
+
+        self.assertEqual(listlen(filtered_list), 1)
+        pass
     
-
-
-
 if __name__ == "__main__":
     unittest.main()
